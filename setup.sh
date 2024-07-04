@@ -49,8 +49,12 @@ sudo systemctl enable containerd.service
 log "Starting Containers..."
 docker compose up -d
 
+log "Setting up the 3.2inch Tft Screen..."
+log "YOUR SYSTEM IS GOING TO RESTART AFTER THAT"
+git clone https://github.com/goodtft/LCD-show $HOME
+mkdir old-boot-config
+sudo cp /boot/config.txt ./old-boot-config
+cd $HOME/LCD-show
+sudo ./LCD32-show
 
-log "NOW YOUR SYSTEM WILL RESTART AND ALL WILL BE DONE!"
-sleep 2
-sudo reboot
 
