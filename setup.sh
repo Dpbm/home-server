@@ -91,7 +91,7 @@ mkdir -p "$HOME/jellyfin/"
 sudo blkid
 echo "Insert your HD UUID: "
 read $hd_uuid
-echo "UUID=$hd_uuid  $HOME/jellyfin  vfat  defaults  0  2" | sudo tee -a /etc/fstab
+echo "UUID=$hd_uuid  $HOME/jellyfin  vfat  defaults,uid=1000,gid=1000  0  2" | sudo tee -a /etc/fstab
 
 
 
