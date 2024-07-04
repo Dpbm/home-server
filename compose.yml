@@ -34,10 +34,13 @@ services:
 
   Theia:
     image: ghcr.io/eclipse-theia/theia-blueprint/theia-ide:latest
+    container_name: "Theia"
+    network_mode: "host"
     ports: 
       - "3004:3000"
     volumes:
       - $HOME/projects/:/projects
+    restart: "always"
 
 volumes:
   portainer_data:
