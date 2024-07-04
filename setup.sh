@@ -64,18 +64,16 @@ docker compose up -d
 log "Setup static IP..."
 echo "the new ip: "
 read $new_ip
-sudo su
-echo "interface wlan0" >> /etc/dhcpcd.conf
-echo "static ip_address=$new_ip/24" >> /etc/dhcpcd.conf
-echo "static routers=192.168.0.1" >> /etc/dhcpcd.conf
-echo "static domain_name_servers=192.168.0.1 1.1.1.1" >> /etc/dhcpcd.conf
-exit
+echo "interface wlan0" | sudo tee -a /etc/dhcpcd.conf
+echo "static ip_address=$new_ip/24" | sudo tee -a /etc/dhcpcd.conf
+echo "static routers=192.168.0.1" | sudo tee -a /etc/dhcpcd.conf
+echo "static domain_name_servers=192.168.0.1 1.1.1.1" | sudo tee -a /etc/dhcpcd.conf
 
 
 
 log "Activating VNC..."
 sudo ln /usr/lib/systemd/system/vncserver-x11-serviced.service /etc/systemd/system/multi-user.target.wants/vncserver-x11-serviced.service
-sudo systemctl start vncserver-x11-serviced
+sudo systemctl start vncserver-x11-serviced/s
 vncpasswd -user
 
 
@@ -86,6 +84,15 @@ git clone https://github.com/goodtft/LCD-show $HOME
 
 log "Disable Bluetooth..."
 echo "dtoverlay=disable-bt" >> $HOME/LCD-show/boot/config.txt.bak
+
+
+log "Setup jellyfin medias..."
+mkdir -p "$HOME/jellyfin/"
+sudo blkid
+echo "Insert your HD UUID: "
+read $hd_uuid
+echo "UUID=$hd_uuid  $HOME/jellyfin  vfat  defaults  0  2" | sudo tee -a /etc/fstab
+
 
 
 log "Setting up the 3.2inch Tft Screen..."

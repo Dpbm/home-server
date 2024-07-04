@@ -41,6 +41,19 @@ services:
     volumes:
       - $HOME:/home/workspace:cached
 
+  Jellyfin:
+    image: jellyfin/jellyfin
+    container_name: Jellyfin
+    user: 1000:1000
+    network_mode: "host"
+    volumes:
+      - $HOME/jellyfin/jellyfin-config:/config
+      - $HOME/jellyfin/jellyfin-cache:/cache
+      - $HOME/jellyfin/jellyfin-medias/media:/media
+      - $HOME/jellyfin/jellyfin-medias/media2:/media2:ro
+    restart: "no"
+
+
 volumes:
   portainer_data:
     external: false
