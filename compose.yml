@@ -19,6 +19,7 @@ services:
       - "8853:8853/udp"
       - "5443:5443/tcp"
       - "5443:5443/udp"
+  
   Portainer:
     image: portainer/portainer-ce:latest
     container_name: Portainer
@@ -30,6 +31,13 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+
+  Theia:
+    image: ghcr.io/eclipse-theia/theia-blueprint/theia-ide:latest
+    ports: 
+      - "3004:3000"
+    volumes:
+      - $HOME/projects/:/projects
 
 volumes:
   portainer_data:
