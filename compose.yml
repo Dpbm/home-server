@@ -40,7 +40,6 @@ services:
       - "3004:3000"
     volumes:
       - $HOME/projects/:/projects
-    restart: "always"
 
 volumes:
   portainer_data:
