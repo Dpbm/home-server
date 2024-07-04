@@ -31,15 +31,16 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-
-  Theia:
-    image: ghcr.io/eclipse-theia/theia-blueprint/theia-ide:latest
-    container_name: "Theia"
+  
+  GitPod:
+    image: gitpod/openvscode-server
+    container_name: GitPod
     network_mode: "host"
-    ports: 
+    restart: "always"
+    ports:
       - "3004:3000"
     volumes:
-      - $HOME/projects/:/projects
+      - $HOME:/home/workspace:cached
 
 volumes:
   portainer_data:

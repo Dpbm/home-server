@@ -88,12 +88,6 @@ log "Disable Bluetooth..."
 echo "dtoverlay=disable-bt" >> $HOME/LCD-show/boot/config.txt.bak
 
 
-
-log "Creating Projects folder (for theia-IDE)..."
-mkdir -p $HOME/projects/
-
-
-
 log "Setting up the 3.2inch Tft Screen..."
 log "YOUR SYSTEM IS GOING TO RESTART AFTER THAT"
 mkdir old-boot-config
