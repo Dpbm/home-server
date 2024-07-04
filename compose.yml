@@ -35,7 +35,6 @@ services:
   GitPod:
     image: gitpod/openvscode-server
     container_name: GitPod
-    network_mode: "host"
     restart: "always"
     ports:
       - "3004:3000"
