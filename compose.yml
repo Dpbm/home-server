@@ -44,7 +44,7 @@ services:
   Jellyfin:
     image: jellyfin/jellyfin
     container_name: Jellyfin
-    user: 0:0
+    user: 1000:1000
     network_mode: "host"
     volumes:
       - $HOME/jellyfin/jellyfin-config:/config
