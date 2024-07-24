@@ -12,7 +12,7 @@ In that, I'm running some docker containers which can be accessed through my who
 - Portainer
 - GitPod
 - AdGuardHome
-
+- Nextcloud
 
 
 ## Setup
@@ -59,4 +59,5 @@ To access the server's services, you can go to:
 - `http://your-raspbery-pi-ip:8096/` for `Jellyfin`
 - `https://your-raspbery-pi-ip:9443/` for `Portainer`
 - `https://your-raspbery-pi-ip:3004/` for `GitPod`
+- `https://your-raspbery-pi-ip:3333/` for `Nextcloud`
 - `https://your-raspbery-pi-ip:3000/` for `AdGuardHome` `obs (the port 3000 may change after further configurations)`
